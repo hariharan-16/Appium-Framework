@@ -104,13 +104,13 @@ Base class for all page objects containing common methods like click, sendKeys, 
 ### Page Objects
 Create page objects by extending BasePage. Each page represents a screen in your app.
 
-**Example - LoginPage:**
+**Example - HomePage:**
 ```java
-public class LoginPage extends BasePage {
-    private final By usernameField = By.id("com.example.app:id/username");
-    
-    public void enterUsername(String username) {
-        sendKeys(usernameField, username);
+public class HomePage extends BasePage {
+    private final By logoutButton = By.id("com.example.app:id/logout");
+
+    public void logout() {
+        click(logoutButton);
     }
 }
 ```
@@ -120,14 +120,15 @@ Create test classes by extending BaseTest. TestNG annotations handle setup/teard
 
 **Example:**
 ```java
-public class LoginTest extends BaseTest {
+public class HomeTest extends BaseTest {
     @Test
-    public void testSuccessfulLogin() {
-        LoginPage loginPage = new LoginPage();
-        loginPage.login("user@example.com", "password");
-        Assert.assertTrue(loginPage.isLoginPageDisplayed());
+    public void testUserCanLogout() {
+        HomePage homePage = new HomePage();
+        homePage.logout();
+        // Add assertions
     }
 }
+
 ```
 
 ## Configuration
@@ -140,7 +141,7 @@ Update `src/main/resources/config.properties` with your:
 
 Update `src/test/java/com/appium/tests/BaseTest.java` with your actual app details:
 ```java
-protected String appPath = "path/to/your/app.apk";
+protected String appPath = "apps/api-demo.apk";
 protected String appPackage = "com.your.app.package";
 protected String appActivity = "com.your.app.MainActivity";
 ```
