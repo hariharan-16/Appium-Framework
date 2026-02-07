@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Appium Test Suite" verbose="2">
+    <test name="Login Tests">
+        <classes>
+            <class name="com.appium.tests.HomeTest">
+                <methods>
+                    <include name="Test01"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
